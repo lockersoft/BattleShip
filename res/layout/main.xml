@@ -6,7 +6,7 @@
         >
     <TableLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="wrap_content">
         <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
@@ -20,7 +20,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:ems="10"
-                    android:id="@+id/username" android:layout_row="0" android:layout_column="5" android:hint="username" />
+                    android:id="@+id/username" android:layout_row="0" android:layout_column="1" android:hint="username"
+                    android:text="dave.jones@scc.spokane.edu"/>
         </TableRow>
         <TableRow
                 android:layout_width="fill_parent"
@@ -33,18 +34,14 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:ems="10"
-                    android:id="@+id/password" android:layout_column="5" android:hint="password"
-                    />
+                    android:id="@+id/password" android:layout_column="1" android:hint="password"
+                    android:text="dljones42"/>
             <Button
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Login"
                     android:id="@+id/loginButton" android:layout_column="12" android:onClick="loginToServer"/>
-        </TableRow>
-        <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
         </TableRow>
         <TableRow
                 android:layout_width="fill_parent"
@@ -56,7 +53,27 @@
                     android:text="Available Users"
                     android:id="@+id/textView2" android:layout_row="4" android:layout_column="0"
                     android:layout_gravity="center_horizontal"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get Users"
+                    android:id="@+id/showUsersBtn" android:layout_column="1" android:onClick="getUsersOnClick"
+                    android:enabled="true"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
         </TableRow>
     </TableLayout>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar" android:layout_gravity="center_horizontal" android:visibility="invisible"
+            />
+    <ExpandableListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView" android:layout_gravity="center_horizontal"/>
 </LinearLayout>
 
