@@ -8,25 +8,43 @@ package com.example.battleship;
  * Class: Gamer
  */
 public class Gamer {
-  String first_name;
-  String last_name;
-  String email;
-  Integer online;
-  Integer available;
-  Integer gaming;
-  // Gamer Constructor
+ private String first_name;
+ private String last_name;
+ private String email;
+ private Boolean online;
+ private Boolean available;
+ private Boolean gaming;
+ private String avatar_name;
+ private String avatar_path;
+ private Integer level, coins, battles_won, battles_lost, battles_tied;
 
-  public Gamer( String _first_name, String _last_name, String _email, Integer _online, Integer _available, Integer _gaming ) {
+  // Gamer Constructor
+  public Gamer( String _first_name, String _last_name,
+                String _email, Boolean _online, Boolean _available, Boolean _gaming,
+                String _avatar_name, String _avatar_path,
+                Integer _level,
+                Integer _coins,
+                Integer _battles_won,
+                Integer _battles_lost,
+                Integer _battles_tied
+  ) {
     first_name = _first_name;
     last_name = _last_name;
     email = _email;
     online = _online;
     available = _available;
     gaming = _gaming;
+    avatar_name = _avatar_name;
+    avatar_path = _avatar_path;
+    level = _level;
+    coins = _coins;
+    battles_won = _battles_won;
+    battles_lost = _battles_lost;
+    battles_tied = _battles_tied;
   }
 
   // first_name Getter
-  public String getFirst_name() {
+  public String getFirstName() {
     return first_name;
   }
 
@@ -36,7 +54,7 @@ public class Gamer {
   }
 
   // last_name Getter
-  public String getLast_name() {
+  public String getLastName() {
     return last_name;
   }
 
@@ -56,33 +74,101 @@ public class Gamer {
   }
 
   // online Getter
-  public Integer getOnline() {
+  public Boolean getOnline() {
     return online;
   }
 
   // online Setter
-  public void setOnline( Integer _online ) {
+  public void setOnline( Boolean _online ) {
     online = _online;
   }
 
   // available Getter
-  public Integer getAvailable() {
+  public Boolean getAvailable() {
     return available;
   }
 
   // available Setter
-  public void setAvailable( Integer _available ) {
+  public void setAvailable( Boolean _available ) {
     available = _available;
   }
 
   // gaming Getter
-  public Integer getGaming() {
+  public Boolean getGaming() {
     return gaming;
   }
 
   // gaming Setter
-  public void setGaming( Integer _gaming ) {
+  public void setGaming( Boolean _gaming ) {
     gaming = _gaming;
+  }
+
+  // avatarName Getter
+  public String getAvatarName() {
+    return avatar_name;
+  }
+
+  // avatarName Setter
+  public void setAvatarPath( String _avatar_name ) {
+    avatar_name = _avatar_name;
+  }
+
+  // avatarPath Getter
+  public String getAvatarPath() {
+    return avatar_path;
+  }
+
+  // avatarPath Setter
+  public void setAvatarName( String _avatar_path ) {
+    avatar_path = _avatar_path;
+  }
+
+  // level Getter
+  public Integer getLevel() {
+    return level;
+  }
+
+  // level Setter
+  public void setLevel( Integer _level ) {
+    level = _level;
+  }
+  // coins Getter
+  public Integer getCoins() {
+    return coins;
+  }
+
+  // coins Setter
+  public void setCoins( Integer _coins ) {
+    coins = _coins;
+  }
+
+  // battles_won Getter
+  public Integer getBattlesWon() {
+    return battles_won;
+  }
+
+  // battles_won Setter
+  public void setBattlesWon( Integer _battles_won ) {
+    battles_won = _battles_won;
+  }
+  // battles_lost Getter
+  public Integer getBattlesLost() {
+    return battles_lost;
+  }
+
+  // battles_lost Setter
+  public void setBattlesLost( Integer _battles_lost ) {
+    battles_lost = _battles_lost;
+  }
+
+  // battles_tied Getter
+  public Integer getBattlesTied() {
+    return battles_tied;
+  }
+
+  // battles_tied Setter
+  public void setBattlesTied( Integer _battles_tied ) {
+    battles_tied = _battles_tied;
   }
 
 }
