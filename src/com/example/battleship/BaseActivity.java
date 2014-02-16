@@ -27,14 +27,13 @@ import java.net.URL;
  */
 public class BaseActivity extends Activity {
 
-  public Gamer currentUser = null;
+  public static Gamer currentUser = null;
 
   public String FILENAME = "";
   public static final String EXT_FOLDERNAME = "/HealthApp/";
   public static final String PREFS_NAME = "HealthAppPrefs";
   public static final String DEF_DOCTOR = "dave@lockersoft.com";
   public String DOCTOR_EMAIL = "";
-  public static RetainedFragment dataFragment;
 
   public enum ServerCommands {
     LOGIN, GET_USERS, GET_AVATAR
@@ -47,31 +46,12 @@ public class BaseActivity extends Activity {
 
     // Restore preferences
     SharedPreferences settings = getSharedPreferences( PREFS_NAME, 0 );
-
-    // find the retained fragment on activity restarts
-    FragmentManager fm = getFragmentManager();
-    if( dataFragment == null )
-      dataFragment = (RetainedFragment) fm.findFragmentByTag("CurrentUserData");
-
-    // create the fragment and data the first time
-    if (dataFragment == null) {
-      // add the fragment
-      dataFragment = new RetainedFragment();
-      fm.beginTransaction().add(dataFragment, "CurrentUserData").addToBackStack( null ).commit();
-      dataFragment.setData(currentUser);
-      fm.executePendingTransactions();
-    }
-
-    // the data is available in dataFragment.getData()
-    currentUser = dataFragment.getData();
-
   }
 
   @Override
   protected void onStop(){
     super.onStop();
     savePreferences();
-    dataFragment.setData( currentUser );
   }
 
   public static Drawable LoadImageFromWeb( String name, String url ) {

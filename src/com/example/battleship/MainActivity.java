@@ -48,11 +48,7 @@ public class MainActivity extends BaseActivity {
 
   @Override
   public void onPause() {
-    dataFragment.setData( currentUser );
-    RetainedFragment df = (RetainedFragment) getFragmentManager().findFragmentByTag( "CurrentUserData" );
-    Log.i("Test", df.toString());
     super.onPause();
-    // store the data in the fragment
   }
 
   public void loginToServer( View view ) {
@@ -195,9 +191,9 @@ public class MainActivity extends BaseActivity {
                   user.getInt( "coins" ),
                   user.getInt( "battles_won" ),
                   user.getInt( "battles_lost" ),
-                  user.getInt( "battles_tied" )
+                  user.getInt( "battles_tied" ),
+                  user.getInt( "experience_points" )
                   );
-              dataFragment.setData( currentUser );
             } catch( Exception e ) {
               e.printStackTrace();
               toastIt( e.getLocalizedMessage() );

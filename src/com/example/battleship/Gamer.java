@@ -16,7 +16,7 @@ public class Gamer {
  private Boolean gaming;
  private String avatar_name;
  private String avatar_path;
- private Integer level, coins, battles_won, battles_lost, battles_tied;
+ private Integer level, coins, battles_won, battles_lost, battles_tied, xp;
 
   // Gamer Constructor
   public Gamer( String _first_name, String _last_name,
@@ -26,7 +26,8 @@ public class Gamer {
                 Integer _coins,
                 Integer _battles_won,
                 Integer _battles_lost,
-                Integer _battles_tied
+                Integer _battles_tied,
+                Integer _xp
   ) {
     first_name = _first_name;
     last_name = _last_name;
@@ -41,6 +42,7 @@ public class Gamer {
     battles_won = _battles_won;
     battles_lost = _battles_lost;
     battles_tied = _battles_tied;
+    xp = _xp;
   }
 
   // first_name Getter
@@ -169,6 +171,25 @@ public class Gamer {
   // battles_tied Setter
   public void setBattlesTied( Integer _battles_tied ) {
     battles_tied = _battles_tied;
+  }
+  // xp Getter
+  public Integer getXp() {
+    return xp;
+  }
+
+  // xp Setter
+  public void setXp( Integer _xp ) {
+    xp = _xp;
+  }
+
+  public String getAvailableDisplay(){
+    return available ? "NO" : "YES";
+  }
+  public String getOnlineDisplay(){
+    return online ? "NO" : "YES";
+  }
+  public String getGamingDisplay(){
+    return gaming ? "NO" : "YES";
   }
 
 }
