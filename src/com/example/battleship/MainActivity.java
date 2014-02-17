@@ -1,6 +1,8 @@
 package com.example.battleship;
 
 import android.app.FragmentManager;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,6 +16,8 @@ import org.json.JSONObject;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import com.loopj.android.http.*;
 
 public class MainActivity extends BaseActivity {
   EditText username, password;
@@ -193,32 +197,45 @@ public class MainActivity extends BaseActivity {
                   user.getInt( "battles_lost" ),
                   user.getInt( "battles_tied" ),
                   user.getInt( "experience_points" )
-                  );
+              );
             } catch( Exception e ) {
               e.printStackTrace();
               toastIt( e.getLocalizedMessage() );
             }
 
-//            sr = new ServerRequest( "", ServerCommands.GET_AVATAR );
-//            GetJSONAsync task = new GetJSONAsync();
-//            task.execute( new ServerRequest[] { sr } );
-
             showUsersBtn.setEnabled( true );
             showUsersBtn.setVisibility( View.VISIBLE );
             availableLabel.setVisibility( View.VISIBLE );
-          }
-          break;
 
-        case GET_AVATAR:
-          avatar_image = LoadImageFromWeb( currentUser.getAvatarName(), "http://battlegameserver.com/assets/" + currentUser.getAvatarPath() );
-          ImageView image = (ImageView)findViewById( R.id.avatar );
-          image.setImageDrawable( avatar_image );
+            // Download the Avatar image and place in the ImageView
+            DownloadAvatarImage( currentUser.getAvatarPath() );
+          }
           break;
 
         default:
           break;
       }
     }
+  }
+
+  public void DownloadAvatarImage( String image ) {
+    AsyncHttpClient client = new AsyncHttpClient();
+    String[] allowedTypes = new String[] { "image/png", "image/jpeg", "image/jpg" };
+    client.get( "http://battlegameserver.com/assets/" + image, new BinaryHttpResponseHandler( allowedTypes ) {
+      @Override
+      public void onSuccess( byte[] imageData ) {
+        // Successfully got a response
+        Drawable d = new BitmapDrawable( getApplicationContext().getResources(), BitmapFactory.decodeByteArray( imageData, 0, imageData.length ) );
+        ImageView imageView = (ImageView)findViewById( R.id.avatar );
+        imageView.setImageDrawable( d );
+      }
+
+      @Override
+      public void onFailure( int i, Throwable e, String imageData ) {
+        // Response failed :(
+      }
+    } );
+
   }
 
 }

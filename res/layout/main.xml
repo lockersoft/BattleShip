@@ -11,37 +11,44 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
             <TextView
-                    android:layout_width="53dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:text="Login"
                     android:layout_row="0" android:layout_column="0"/>
             <EditText
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:ems="10"
                     android:id="@+id/username" android:layout_row="0" android:layout_column="1" android:hint="username"
-                    android:text="dave.jones@scc.spokane.edu"/>
-        </TableRow>
-        <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-            <TextView android:layout_width="81dp" android:layout_height="wrap_content" android:text="Password"
-                      android:layout_row="1" android:layout_column="0" android:id="@+id/textView"
-                      android:layout_gravity="top"/>
-            <EditText
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:ems="10"
-                    android:id="@+id/password" android:layout_column="1" android:hint="password"
-                    android:text="dljones42"/>
+                    android:text="dave.jones@scc.spokane.edu" android:layout_span="4"/>
             <Button
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Login"
-                    android:id="@+id/loginButton" android:layout_column="12" android:onClick="loginToServer"/>
+                    android:id="@+id/loginButton" android:layout_column="14" android:onClick="loginToServer"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <TextView android:layout_width="40dp" android:layout_height="wrap_content" android:text="Password"
+                      android:layout_row="1" android:layout_column="0" android:id="@+id/textView"
+                      android:layout_gravity="top"/>
+            <EditText
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/password" android:layout_column="1" android:hint="password"
+                    android:text="dljones42"/>
+            <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/avatar"
+                    android:layout_column="2"
+                    android:layout_gravity="center_horizontal"/>
+
         </TableRow>
         <TableRow
                 android:layout_width="fill_parent"
@@ -59,10 +66,7 @@
                     android:text="Get Users"
                     android:id="@+id/showUsersBtn" android:layout_column="1" android:onClick="getUsersOnClick"
                     android:enabled="true" android:visibility="invisible"/>
-        </TableRow>
-        <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+
         </TableRow>
     </TableLayout>
     <ProgressBar
@@ -71,9 +75,5 @@
             android:layout_height="wrap_content"
             android:id="@+id/progressBar" android:layout_gravity="center_horizontal" android:visibility="invisible"
             />
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/avatar" android:layout_gravity="center_horizontal"/>
 </LinearLayout>
 
