@@ -88,6 +88,9 @@ public class BaseActivity extends Activity {
       case R.id.switchToPreferences:
         startActivity( new Intent( this, Preferences.class ) );
         break;
+      case R.id.switchToGame:
+        startActivity( new Intent( this, Game.class ) );
+        break;
       default:
         return super.onOptionsItemSelected( item );
     }

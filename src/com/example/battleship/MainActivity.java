@@ -45,16 +45,6 @@ public class MainActivity extends BaseActivity {
 
   }
 
-  @Override
-  public void onDestroy() {
-    super.onDestroy();
-  }
-
-  @Override
-  public void onPause() {
-    super.onPause();
-  }
-
   public void loginToServer( View view ) {
     String credentials = username.getText().toString() + ":" + password.getText().toString();
     base64EncodedCredentials = Base64.encodeToString( credentials.getBytes(), Base64.NO_WRAP );
