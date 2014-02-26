@@ -1,5 +1,6 @@
 package com.example.battleship;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 
 /**
  * User: lockersoft
@@ -20,6 +22,7 @@ public class Game extends BaseActivity {
 
   public static GameCell[][] gameGrid = new GameCell[11][11];
   View gameBoard = null;
+  Activity customGrid = this;
 
   @Override
   protected void onCreate( Bundle savedInstanceState ) {
@@ -41,6 +44,17 @@ public class Game extends BaseActivity {
 
   }
 
+  public static float[] getRelativeCoords(Activity activity,
+                                          MotionEvent e)
+  {
+    // MapView
+    View contentView= activity.getWindow().
+        findViewById( Window.ID_ANDROID_CONTENT);
+    return new float[] {
+        e.getRawX() - contentView.getLeft(),
+        e.getRawY() - contentView.getTop()};
+  }
+
   @Override
   public boolean onTouchEvent(MotionEvent event) {
     int eventAction = event.getAction();
@@ -57,7 +71,9 @@ public class Game extends BaseActivity {
       case MotionEvent.ACTION_UP:
         // finger leaves the screen
         Log.i( "TOUCH", "x:" + event.getX() + " y:" + event.getY() );
-        Point indicies = findXYIndexes( event.getX(), event.getY() );
+        float[] xy = getRelativeCoords( customGrid,event );
+//        Point indicies = findXYIndexes( event.getX(), event.getY() );
+        Point indicies = findXYIndexes( xy[0], xy[1] );
         Log.i("TOUCH", "ix: " + indicies.x + " iy: " + indicies.y);
         gameGrid[indicies.x][indicies.y].setWaiting( true );
         //getWindow().getDecorView().getRootView().invalidate();
@@ -77,6 +93,6 @@ public class Game extends BaseActivity {
     int yo = Game.gameGrid[0][0].getViewOrigin().y;
 
     return new Point( (int)((x-xo)/width),
-                      (int)((y-yo)/height) );
+                      (int)((y-50-yo)/height) );
   }
 }

@@ -61,8 +61,8 @@ public class BoardView extends ImageView {
     paint.setColor( Color.GREEN );
     paint.setStrokeWidth( 2 );
 
-    Game.gameGrid[0][0].setCellHeight( cellHeight+topBoardY );
-    Game.gameGrid[0][0].setCellWidth( cellWidth + border );
+    Game.gameGrid[0][0].setCellHeight( cellHeight );
+    Game.gameGrid[0][0].setCellWidth( cellWidth );
     Game.gameGrid[0][0].setViewOrigin( origin );
     
     for( int y=0;y<11;y++){
