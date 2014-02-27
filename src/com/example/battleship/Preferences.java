@@ -1,10 +1,8 @@
 package com.example.battleship;
 
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import org.w3c.dom.Text;
 
 /**
  * User: lockersoft
@@ -45,7 +43,7 @@ public class Preferences extends BaseActivity {
     SetFieldsFromGamer();
   }
 
-  void SetFieldsFromGamer(){
+  void SetFieldsFromGamer() {
     etAvatar.setText( currentUser.getAvatarName() );
     etFirst.setText( currentUser.getFirstName() );
     etLast.setText( currentUser.getLastName() );
@@ -64,7 +62,7 @@ public class Preferences extends BaseActivity {
     txTied.setText( currentUser.getBattlesTied().toString() );
   }
 
-  public void savePrefsOnClick( View v ){
+  public void savePrefsOnClick( View v ) {
 
   }
 }

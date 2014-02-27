@@ -1,6 +1,5 @@
 package com.example.battleship;
 
-import android.app.FragmentManager;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -10,6 +9,8 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.BinaryHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,19 +18,14 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import com.loopj.android.http.*;
-
 public class MainActivity extends BaseActivity {
   EditText username, password;
   String base64EncodedCredentials = "";
   Button loginBtn, showUsersBtn;
   String getUsersUrl = "http://battlegameserver.com/users/index.json";
   String loginUrl = "http://battlegameserver.com/users/login.json";
-  public JSONObject usersJSON;
   ProgressBar progressBar;
-  ListView userListView;
   TextView availableLabel;
-  Drawable avatar_image;
 
   @Override
   public void onCreate( Bundle savedInstanceState ) {

@@ -1,7 +1,6 @@
 package com.example.battleship;
 
 import android.graphics.Point;
-import android.text.BoringLayout;
 
 /**
  * User: lockersoft
@@ -20,7 +19,7 @@ public class GameCell {
   private Point viewOrigin;
   private int cellHeight, cellWidth;
 
-  public GameCell(){
+  public GameCell() {
     has_ship = false;
     miss = false;
     hit = false;
@@ -41,27 +40,27 @@ public class GameCell {
     bottomRight = _bottomRight;
   }
 
-  public void setViewOrigin( Point _origin ){
+  public void setViewOrigin( Point _origin ) {
     viewOrigin = _origin;
   }
 
-  public Point getViewOrigin(){
+  public Point getViewOrigin() {
     return viewOrigin;
   }
 
-  public void setCellHeight( int _cellHeight ){
+  public void setCellHeight( int _cellHeight ) {
     cellHeight = _cellHeight;
   }
 
-  public int getCellHeight(){
+  public int getCellHeight() {
     return cellHeight;
   }
 
-  public void setCellWidth( int _cellWidth ){
+  public void setCellWidth( int _cellWidth ) {
     cellWidth = _cellWidth;
   }
 
-  public int getCellWidth(){
+  public int getCellWidth() {
     return cellWidth;
   }
 

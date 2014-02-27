@@ -1,9 +1,6 @@
 package com.example.battleship;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +26,7 @@ public class Game extends BaseActivity {
     super.onCreate( savedInstanceState );
     initializeApp();
     setContentView( R.layout.gameboard );
-    gameBoard = (View)findViewById( R.id.boardView );
+    gameBoard = findViewById( R.id.boardView );
   }
 
   private void initializeApp() {
@@ -93,6 +90,6 @@ public class Game extends BaseActivity {
     int yo = Game.gameGrid[0][0].getViewOrigin().y;
 
     return new Point( (int)((x-xo)/width),
-                      (int)((y-50-yo)/height) );
+                      (int)((y- gridTop -yo)/height) );
   }
 }
