@@ -68,9 +68,9 @@ public class BaseActivity extends Activity {
   @Override
   public boolean onCreateOptionsMenu( Menu menu ) {
     getMenuInflater().inflate( R.menu.mastermenu, menu );
-    MenuItem item = menu.findItem(R.id.switchToPreferences);
+    MenuItem item = menu.findItem( R.id.switchToPreferences );
     if( currentUser == null )
-      item.setVisible(false);
+      item.setVisible( false );
     return true;
   }
 

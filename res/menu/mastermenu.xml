@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-            android:id="@+id/switchToPreferences"
-            android:orderInCategory="300"
-            android:showAsAction="always"
-            android:icon="@drawable/preferences"
-            android:title="Preferences"/>
+  <item
+      android:id="@+id/switchToPreferences"
+      android:orderInCategory="300"
+      android:showAsAction="always"
+      android:icon="@drawable/preferences"
+      android:title="Preferences"/>
   <item
       android:id="@+id/switchToGame"
       android:orderInCategory="300"

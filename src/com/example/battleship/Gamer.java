@@ -4,19 +4,19 @@ package com.example.battleship;
  * User: lockersoft
  * Date: 2/11/14
  * Time: 12:38 PM
- *
+ * <p/>
  * Class: Gamer
  */
 public class Gamer {
- private String first_name;
- private String last_name;
- private String email;
- private Boolean online;
- private Boolean available;
- private Boolean gaming;
- private String avatar_name;
- private String avatar_path;
- private Integer level, coins, battles_won, battles_lost, battles_tied, xp;
+  private String first_name;
+  private String last_name;
+  private String email;
+  private Boolean online;
+  private Boolean available;
+  private Boolean gaming;
+  private String avatar_name;
+  private String avatar_path;
+  private Integer level, coins, battles_won, battles_lost, battles_tied, xp;
 
   // Gamer Constructor
   public Gamer( String _first_name, String _last_name,
@@ -134,6 +134,7 @@ public class Gamer {
   public void setLevel( Integer _level ) {
     level = _level;
   }
+
   // coins Getter
   public Integer getCoins() {
     return coins;
@@ -153,6 +154,7 @@ public class Gamer {
   public void setBattlesWon( Integer _battles_won ) {
     battles_won = _battles_won;
   }
+
   // battles_lost Getter
   public Integer getBattlesLost() {
     return battles_lost;
@@ -172,6 +174,7 @@ public class Gamer {
   public void setBattlesTied( Integer _battles_tied ) {
     battles_tied = _battles_tied;
   }
+
   // xp Getter
   public Integer getXp() {
     return xp;
@@ -182,13 +185,15 @@ public class Gamer {
     xp = _xp;
   }
 
-  public String getAvailableDisplay(){
+  public String getAvailableDisplay() {
     return available ? "NO" : "YES";
   }
-  public String getOnlineDisplay(){
+
+  public String getOnlineDisplay() {
     return online ? "NO" : "YES";
   }
-  public String getGamingDisplay(){
+
+  public String getGamingDisplay() {
     return gaming ? "NO" : "YES";
   }
 

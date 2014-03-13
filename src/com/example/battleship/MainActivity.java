@@ -33,19 +33,19 @@ public class MainActivity extends BaseActivity {
   ArrayAdapter adapter = null;
 
   @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.main);
-    loginBtn = (Button) findViewById(R.id.loginButton);
-    username = (EditText) findViewById(R.id.username);
-    password = (EditText) findViewById(R.id.password);
-    showUsersBtn = (Button) findViewById(R.id.showUsersBtn);
-    progressBar = (ProgressBar) findViewById(R.id.progressBar);
-    availableLabel = (TextView) findViewById(R.id.availableLabel);
-    userListView = (ListView) findViewById(R.id.listView);
+  public void onCreate( Bundle savedInstanceState ) {
+    super.onCreate( savedInstanceState );
+    setContentView( R.layout.main );
+    loginBtn = (Button)findViewById( R.id.loginButton );
+    username = (EditText)findViewById( R.id.username );
+    password = (EditText)findViewById( R.id.password );
+    showUsersBtn = (Button)findViewById( R.id.showUsersBtn );
+    progressBar = (ProgressBar)findViewById( R.id.progressBar );
+    availableLabel = (TextView)findViewById( R.id.availableLabel );
+    userListView = (ListView)findViewById( R.id.listView );
   }
 
-  public void loginToServer(View view) {
+  public void loginToServer( View view ) {
 //    loginUsername = username.getText().toString();
 //    loginPassword = password.getText().toString();
     //  String credentials = username.getText().toString() + ":" + password.getText().toString();
@@ -57,107 +57,107 @@ public class MainActivity extends BaseActivity {
 //    task.execute( new ServerRequest[] { sr } );
 
     // Check text of button and login or logout
-    if (loginBtn.getText().toString() == "Logout") {
+    if( loginBtn.getText().toString() == "Logout" ) {
       // Hide buttons, etc.
-      loginBtn.setText("Login");
-      showUsersBtn.setEnabled(false);
-      showUsersBtn.setVisibility(View.INVISIBLE);
-      availableLabel.setVisibility(View.INVISIBLE);
+      loginBtn.setText( "Login" );
+      showUsersBtn.setEnabled( false );
+      showUsersBtn.setVisibility( View.INVISIBLE );
+      availableLabel.setVisibility( View.INVISIBLE );
       invalidateOptionsMenu();
     } else {
-      loginBtn.setText("Logout");
+      loginBtn.setText( "Logout" );
       AsyncHttpClient client = new AsyncHttpClient();
       loginUsername = username.getText().toString();
       loginPassword = password.getText().toString();
-      client.setBasicAuth(loginUsername, loginPassword);
-      client.get(loginUrl, new AsyncHttpResponseHandler() {
+      client.setBasicAuth( loginUsername, loginPassword );
+      client.get( loginUrl, new AsyncHttpResponseHandler() {
 
         @Override
-        public void onProgress(int position, int length) {
-          Log.i("LOGIN", "pos: " + position + " len: " + length);
-          progressBar.setProgress(position);
+        public void onProgress( int position, int length ) {
+          Log.i( "LOGIN", "pos: " + position + " len: " + length );
+          progressBar.setProgress( position );
         }
 
         @Override
-        public void onSuccess(String response) {
-          Log.i("LOGIN", response);
+        public void onSuccess( String response ) {
+          Log.i( "LOGIN", response );
           try {
-            JSONObject user = new JSONObject(response);
-            Log.i("JSON", user.getString("first_name") + " " + user.getString("last_name") + "\n");
+            JSONObject user = new JSONObject( response );
+            Log.i( "JSON", user.getString( "first_name" ) + " " + user.getString( "last_name" ) + "\n" );
             // Put into a gamer object
             // String _first_name, String _last_name, String _email, Integer _online,
             // Integer _available, Integer _gaming, String _avatar
             currentUser = new Gamer(
-                user.getString("first_name"),
-                user.getString("last_name"),
-                user.getString("email"),
-                user.getBoolean("online"),
-                user.getBoolean("available"),
-                user.getBoolean("gaming"),
-                user.getString("avatar_name"),
-                user.getString("avatar_image"),
-                user.getInt("level"),
-                user.getInt("coins"),
-                user.getInt("battles_won"),
-                user.getInt("battles_lost"),
-                user.getInt("battles_tied"),
-                user.getInt("experience_points")
+                user.getString( "first_name" ),
+                user.getString( "last_name" ),
+                user.getString( "email" ),
+                user.getBoolean( "online" ),
+                user.getBoolean( "available" ),
+                user.getBoolean( "gaming" ),
+                user.getString( "avatar_name" ),
+                user.getString( "avatar_image" ),
+                user.getInt( "level" ),
+                user.getInt( "coins" ),
+                user.getInt( "battles_won" ),
+                user.getInt( "battles_lost" ),
+                user.getInt( "battles_tied" ),
+                user.getInt( "experience_points" )
             );
-          } catch (Exception e) {
+          } catch( Exception e ) {
             e.printStackTrace();
-            toastIt(e.getLocalizedMessage());
+            toastIt( e.getLocalizedMessage() );
           }
 
-          showUsersBtn.setEnabled(true);
-          showUsersBtn.setVisibility(View.VISIBLE);
-          availableLabel.setVisibility(View.VISIBLE);
+          showUsersBtn.setEnabled( true );
+          showUsersBtn.setVisibility( View.VISIBLE );
+          availableLabel.setVisibility( View.VISIBLE );
           invalidateOptionsMenu();
 
           // Download the Avatar image and place in the ImageView
-          DownloadAvatarImage(currentUser.getAvatarPath());
+          DownloadAvatarImage( currentUser.getAvatarPath() );
         }
 
         @Override
-        public void onFailure(int i, Throwable e, String errorMsg) {
+        public void onFailure( int i, Throwable e, String errorMsg ) {
           // Response failed :(
-          Log.i("LOGIN", errorMsg + " i:" + i);
-          toastIt("Connection Error: " + errorMsg);
+          Log.i( "LOGIN", errorMsg + " i:" + i );
+          toastIt( "Connection Error: " + errorMsg );
         }
-      });
+      } );
     }
   }
 
   public void ChallengeComputer() {
     AsyncHttpClient client = new AsyncHttpClient();
-    client.setBasicAuth(loginUsername, loginPassword);
+    client.setBasicAuth( loginUsername, loginPassword );
     String challengeUrl = "http://battlegameserver.com/api/v1/challenge_computer.json";
-    client.get(challengeUrl, new AsyncHttpResponseHandler() {
+    client.get( challengeUrl, new AsyncHttpResponseHandler() {
       @Override
-      public void onSuccess(String response) {
+      public void onSuccess( String response ) {
         // Successfully got a response so parse JSON object
         try {
-          JSONObject user = new JSONObject(response);
-          gameID = Integer.parseInt(user.getString( "game_id"));
-        } catch (Exception e){
+          JSONObject user = new JSONObject( response );
+          gameID = Integer.parseInt( user.getString( "game_id" ) );
+        } catch( Exception e ) {
           e.printStackTrace();
-          toastIt(e.getLocalizedMessage());
+          toastIt( e.getLocalizedMessage() );
         }
       }
 
       @Override
-      public void onFailure(int i, Throwable e, String imageData) {
+      public void onFailure( int i, Throwable e, String imageData ) {
         // Response failed :(
-        toastIt(e.getLocalizedMessage());
+        toastIt( e.getLocalizedMessage() );
       }
-    });
+    } );
   }
 
-  public void getUsersOnClick(View v) {
+  public void getUsersOnClick( View v ) {
     ChallengeComputer();
-    progressBar.setVisibility(View.VISIBLE);
-    ServerRequest sr = new ServerRequest(getUsersUrl, ServerCommands.GET_USERS);
+    progressBar.setVisibility( View.VISIBLE );
+    ServerRequest sr = new ServerRequest( getUsersUrl, ServerCommands.GET_USERS );
     GetJSONAsync task = new GetJSONAsync();
-    task.execute(new ServerRequest[]{sr});
+    task.execute( new ServerRequest[] { sr } );
   }
 
   private class GetJSONAsync extends AsyncTask<ServerRequest, Integer, ServerRequest> {
@@ -168,7 +168,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected ServerRequest doInBackground(ServerRequest... params) {
+    protected ServerRequest doInBackground( ServerRequest... params ) {
       String usersUrl = params[0].getUrl();
       HttpURLConnection urlConnection = null;
       URL url = null;
@@ -178,9 +178,9 @@ public class MainActivity extends BaseActivity {
 
       // Get the data from the URL
       try {
-        url = new URL(usersUrl);
-        urlConnection = (HttpURLConnection) url.openConnection();
-        urlConnection.setRequestProperty("Authorization", "Basic " + base64EncodedCredentials);
+        url = new URL( usersUrl );
+        urlConnection = (HttpURLConnection)url.openConnection();
+        urlConnection.setRequestProperty( "Authorization", "Basic " + base64EncodedCredentials );
         urlConnection.connect();
       } catch( IOException ioe ) {
         ioe.printStackTrace();
@@ -251,13 +251,13 @@ public class MainActivity extends BaseActivity {
               JSONObject user = (JSONObject)allUsers.get( i );
               Log.i( "JSON", user.getString( "first_name" ) + " " + user.getString( "last_name" ) + "\n" );
               // TODO: Put data into a ListAdapter to display!!
-              userList.add(user.getString("avatar_name"));
+              userList.add( user.getString( "avatar_name" ) );
             }
-            adapter = new ArrayAdapter(getApplicationContext(),
-                android.R.layout.simple_list_item_1, userList);
-            userListView.setAdapter(adapter);
+            adapter = new ArrayAdapter( getApplicationContext(),
+                android.R.layout.simple_list_item_1, userList );
+            userListView.setAdapter( adapter );
 
-          } catch (Exception e) {
+          } catch( Exception e ) {
             e.printStackTrace();
             toastIt( e.getLocalizedMessage() );
           }
@@ -297,9 +297,9 @@ public class MainActivity extends BaseActivity {
               toastIt( e.getLocalizedMessage() );
             }
 
-            showUsersBtn.setEnabled(true);
-            showUsersBtn.setVisibility(View.VISIBLE);
-            availableLabel.setVisibility(View.VISIBLE);
+            showUsersBtn.setEnabled( true );
+            showUsersBtn.setVisibility( View.VISIBLE );
+            availableLabel.setVisibility( View.VISIBLE );
             invalidateOptionsMenu();
 
             // Download the Avatar image and place in the ImageView

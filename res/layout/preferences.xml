@@ -1,243 +1,305 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
-        android:useDefaultMargins="true"
-        android:alignmentMode="alignBounds"
-        android:columnOrderPreserved="false"
+    android:useDefaultMargins="true"
+    android:alignmentMode="alignBounds"
+    android:columnOrderPreserved="false"
 
-        android:columnCount="9"
-        >
+    android:columnCount="9"
+    >
+
+  <TextView
+      android:text="Gamer Information"
+      android:textSize="32dip"
+      android:layout_columnSpan="4"
+      android:layout_gravity="center_horizontal"
+      />
+
+  <TextView
+      android:text="You can edit your information here:"
+      android:textSize="16dip"
+      android:layout_columnSpan="6"
+      android:layout_gravity="left"
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      />
+
+  <TextView
+      android:text="Avatar Name"
+      android:layout_gravity="right"
+      android:layout_width="wrap_content"
+      android:layout_columnSpan="1"
+      android:layout_column="0"
+      android:layout_height="wrap_content"
+      android:id="@+id/textView"
+      />
+
+  <EditText
+      android:ems="10"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_columnSpan="5"
+      android:id="@+id/etAvatar"
+      />
+
+  <TextView
+      android:text="First Name"
+      android:layout_gravity="right"
+      android:layout_width="wrap_content"
+      android:layout_column="0"
+      android:layout_columnSpan="1"
+      android:layout_height="wrap_content"
+      android:id="@+id/textView"
+      />
+
+  <EditText
+      android:ems="10"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_columnSpan="5"
+      android:id="@+id/etFirst"
+      />
+
+  <TextView
+      android:text="Last Name"
+      android:layout_gravity="right"
+      android:layout_width="wrap_content"
+      android:layout_columnSpan="1"
+      android:layout_column="0"
+      android:layout_height="wrap_content"
+      android:id="@+id/textView"
+      />
+
+  <EditText
+      android:ems="10"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_columnSpan="5"
+      android:id="@+id/etLast"
+      />
+
+  <TextView
+      android:text="Email address:"
+      android:layout_columnSpan="1"
+      android:layout_column="0"
+      android:layout_gravity="right"
+      />
+
+  <EditText
+      android:layout_columnSpan="5"
+      android:ems="10"
+      android:id="@+id/etEmail"
+      />
+
+  <TextView
+      android:text="Password:"
+      android:layout_columnSpan="1"
+      android:layout_column="0"
+      android:layout_gravity="right"
+      />
+
+  <EditText
+      android:layout_columnSpan="5"
+      android:ems="10"
+      android:id="@+id/etPassword"
+      android:inputType="textPassword"
+      />
+
+  <GridLayout
+      android:layout_width="match_parent"
+      android:layout_height="fill_parent"
+      android:layout_column="0"
+      android:layout_columnSpan="8"
+      android:columnCount="7"
+      android:layout_margin="20dp"
+      >
 
     <TextView
-            android:text="Gamer Information"
-            android:textSize="32dip"
-            android:layout_columnSpan="4"
-            android:layout_gravity="center_horizontal"
-            />
+        android:text="XP: "
+        android:layout_columnSpan="1"
+        android:layout_column="0"
+        android:layout_gravity="right"
+        android:layout_row="0"
+        android:layout_marginRight="10dp"
+        />
 
     <TextView
-            android:text="You can edit your information here:"
-            android:textSize="16dip"
-            android:layout_columnSpan="6"
-            android:layout_gravity="left"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-
-    <TextView android:text="Avatar Name"
-              android:layout_gravity="right"
-              android:layout_width="wrap_content"
-              android:layout_columnSpan="1"
-              android:layout_column="0"
-              android:layout_height="wrap_content"
-              android:id="@+id/textView"/>
-    <EditText android:ems="10"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_columnSpan="5"
-              android:id="@+id/etAvatar"/>
-
-    <TextView android:text="First Name"
-              android:layout_gravity="right"
-              android:layout_width="wrap_content"
-              android:layout_column="0"
-              android:layout_columnSpan="1"
-              android:layout_height="wrap_content"
-              android:id="@+id/textView"/>
-    <EditText android:ems="10"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_columnSpan="5"
-              android:id="@+id/etFirst"/>
-
-    <TextView android:text="Last Name"
-              android:layout_gravity="right"
-              android:layout_width="wrap_content"
-              android:layout_columnSpan="1"
-              android:layout_column="0"
-              android:layout_height="wrap_content"
-              android:id="@+id/textView"/>
-    <EditText android:ems="10"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_columnSpan="5"
-              android:id="@+id/etLast"/>
+        android:text="0"
+        android:layout_columnSpan="1"
+        android:layout_column="1"
+        android:layout_gravity="left"
+        android:id="@+id/txXP"
+        android:textColor="#00ff00"
+        android:textStyle="bold"
+        android:layout_row="0"
+        android:layout_marginRight="30dp"
+        />
 
     <TextView
-            android:text="Email address:"
-            android:layout_columnSpan="1"
-            android:layout_column="0"
-            android:layout_gravity="right"
-            />
-    <EditText android:layout_columnSpan="5"
-              android:ems="10"
-              android:id="@+id/etEmail"
-            />
+        android:text="Level: "
+        android:layout_columnSpan="1"
+        android:layout_column="2"
+        android:layout_gravity="right"
+        android:layout_row="0"
+        />
 
     <TextView
-            android:text="Password:"
-            android:layout_columnSpan="1"
-            android:layout_column="0"
-            android:layout_gravity="right"
-            />
-    <EditText
-            android:layout_columnSpan="5"
-            android:ems="10"
-            android:id="@+id/etPassword"
-            android:inputType="textPassword"/>
+        android:text="0"
+        android:layout_columnSpan="1"
+        android:layout_column="3"
+        android:layout_gravity="left"
+        android:id="@+id/txLevel"
+        android:textColor="#00ff00"
+        android:textStyle="bold"
+        android:layout_marginRight="30dp"
+        android:layout_row="0"
+        />
 
-    <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_column="0"
-            android:layout_columnSpan="8"
-            android:columnCount="7"
-            android:layout_margin="20dp">
-        <TextView
-                android:text="XP: "
-                android:layout_columnSpan="1"
-                android:layout_column="0"
-                android:layout_gravity="right"
-                android:layout_row="0"
-                android:layout_marginRight="10dp"
-                />
-        <TextView
-                android:text="0"
-                android:layout_columnSpan="1"
-                android:layout_column="1"
-                android:layout_gravity="left"
-                android:id="@+id/txXP"
-                android:textColor="#00ff00"
-                android:textStyle="bold" android:layout_row="0"
-                android:layout_marginRight="30dp"
-                />
-        <TextView
-                android:text="Level: "
-                android:layout_columnSpan="1"
-                android:layout_column="2"
-                android:layout_gravity="right"
-                android:layout_row="0"/>
-        <TextView
-                android:text="0"
-                android:layout_columnSpan="1"
-                android:layout_column="3"
-                android:layout_gravity="left"
-                android:id="@+id/txLevel"
-                android:textColor="#00ff00"
-                android:textStyle="bold"
-                android:layout_marginRight="30dp"
-                android:layout_row="0"
-                />
-        <TextView
-                android:text="Coins: "
-                android:layout_columnSpan="1"
-                android:layout_column="4"
-                android:layout_gravity="right"
-                android:layout_row="0"/>
-        <TextView
-                android:text="0"
-                android:layout_columnSpan="1"
-                android:layout_column="5"
-                android:layout_gravity="left"
-                android:id="@+id/txCoins"
-                android:textColor="#00ff00"
-                android:numeric="integer"
-                android:textStyle="bold"
-                android:layout_row="0"/>
-        <TextView
-                android:text="Online: "
-                android:layout_columnSpan="1"
-                android:layout_column="0"
-                android:layout_gravity="right"
-                android:layout_row="1"/>
-        <TextView
-                android:text="0"
-                android:layout_columnSpan="1"
-                android:layout_column="1"
-                android:layout_gravity="left"
-                android:id="@+id/txOnline"
-                android:textColor="#00ff00"
-                android:textStyle="bold" android:layout_row="1"/>
-        <TextView
-                android:text="Available: "
-                android:layout_columnSpan="1"
-                android:layout_column="2"
-                android:layout_gravity="left"
-                android:layout_row="1"/>
-        <TextView
-                android:text="0"
-                android:layout_columnSpan="1"
-                android:layout_column="3"
-                android:layout_gravity="left"
-                android:id="@+id/txAvailable"
-                android:textColor="#00ff00"
-                android:textStyle="bold" android:layout_row="1"/>
-        <TextView
-                android:text="Gaming: "
-                android:layout_columnSpan="1"
-                android:layout_column="4"
-                android:layout_gravity="right"
-                android:layout_row="1"/>
-        <TextView
-                android:text="0"
-                android:layout_columnSpan="1"
-                android:layout_column="5"
-                android:layout_gravity="left"
-                android:id="@+id/txGaming"
-                android:textColor="#00ff00"
-                android:textStyle="bold" android:layout_row="1"/>
-        <TextView
-                android:text="Won: "
-                android:layout_columnSpan="1"
-                android:layout_column="0"
-                android:layout_gravity="right"
-                android:layout_row="2"/>
-        <TextView
-                android:text="0"
-                android:layout_columnSpan="1"
-                android:layout_column="1"
-                android:layout_gravity="left"
-                android:id="@+id/txWon"
-                android:textColor="#00ff00"
-                android:textStyle="bold" android:layout_row="2"/>
-        <TextView
-                android:text="Lost: "
-                android:layout_columnSpan="1"
-                android:layout_column="2"
-                android:layout_gravity="right"
-                android:layout_row="2"/>
-        <TextView
-                android:text="0"
-                android:layout_columnSpan="1"
-                android:layout_column="3"
-                android:layout_gravity="left"
-                android:id="@+id/txLost"
-                android:textColor="#00ff00"
-                android:textStyle="bold" android:layout_row="2"/>
-        <TextView
-                android:text="Tied: "
-                android:layout_columnSpan="1"
-                android:layout_column="4"
-                android:layout_gravity="right"
-                android:layout_row="2"/>
-        <TextView
-                android:text="0"
-                android:layout_columnSpan="1"
-                android:layout_column="5"
-                android:layout_gravity="left"
-                android:id="@+id/txTied"
-                android:textColor="#00ff00"
-                android:textStyle="bold" android:layout_row="2"/>
+    <TextView
+        android:text="Coins: "
+        android:layout_columnSpan="1"
+        android:layout_column="4"
+        android:layout_gravity="right"
+        android:layout_row="0"
+        />
 
-        <Button
-                android:text="Save"
-                android:layout_column="5"
-                android:layout_marginTop="20dp"
-                android:onClick="savePrefsOnClick"
-                android:layout_columnSpan="1"/>
-    </GridLayout>
+    <TextView
+        android:text="0"
+        android:layout_columnSpan="1"
+        android:layout_column="5"
+        android:layout_gravity="left"
+        android:id="@+id/txCoins"
+        android:textColor="#00ff00"
+        android:numeric="integer"
+        android:textStyle="bold"
+        android:layout_row="0"
+        />
+
+    <TextView
+        android:text="Online: "
+        android:layout_columnSpan="1"
+        android:layout_column="0"
+        android:layout_gravity="right"
+        android:layout_row="1"
+        />
+
+    <TextView
+        android:text="0"
+        android:layout_columnSpan="1"
+        android:layout_column="1"
+        android:layout_gravity="left"
+        android:id="@+id/txOnline"
+        android:textColor="#00ff00"
+        android:textStyle="bold"
+        android:layout_row="1"
+        />
+
+    <TextView
+        android:text="Available: "
+        android:layout_columnSpan="1"
+        android:layout_column="2"
+        android:layout_gravity="left"
+        android:layout_row="1"
+        />
+
+    <TextView
+        android:text="0"
+        android:layout_columnSpan="1"
+        android:layout_column="3"
+        android:layout_gravity="left"
+        android:id="@+id/txAvailable"
+        android:textColor="#00ff00"
+        android:textStyle="bold"
+        android:layout_row="1"
+        />
+
+    <TextView
+        android:text="Gaming: "
+        android:layout_columnSpan="1"
+        android:layout_column="4"
+        android:layout_gravity="right"
+        android:layout_row="1"
+        />
+
+    <TextView
+        android:text="0"
+        android:layout_columnSpan="1"
+        android:layout_column="5"
+        android:layout_gravity="left"
+        android:id="@+id/txGaming"
+        android:textColor="#00ff00"
+        android:textStyle="bold"
+        android:layout_row="1"
+        />
+
+    <TextView
+        android:text="Won: "
+        android:layout_columnSpan="1"
+        android:layout_column="0"
+        android:layout_gravity="right"
+        android:layout_row="2"
+        />
+
+    <TextView
+        android:text="0"
+        android:layout_columnSpan="1"
+        android:layout_column="1"
+        android:layout_gravity="left"
+        android:id="@+id/txWon"
+        android:textColor="#00ff00"
+        android:textStyle="bold"
+        android:layout_row="2"
+        />
+
+    <TextView
+        android:text="Lost: "
+        android:layout_columnSpan="1"
+        android:layout_column="2"
+        android:layout_gravity="right"
+        android:layout_row="2"
+        />
+
+    <TextView
+        android:text="0"
+        android:layout_columnSpan="1"
+        android:layout_column="3"
+        android:layout_gravity="left"
+        android:id="@+id/txLost"
+        android:textColor="#00ff00"
+        android:textStyle="bold"
+        android:layout_row="2"
+        />
+
+    <TextView
+        android:text="Tied: "
+        android:layout_columnSpan="1"
+        android:layout_column="4"
+        android:layout_gravity="right"
+        android:layout_row="2"
+        />
+
+    <TextView
+        android:text="0"
+        android:layout_columnSpan="1"
+        android:layout_column="5"
+        android:layout_gravity="left"
+        android:id="@+id/txTied"
+        android:textColor="#00ff00"
+        android:textStyle="bold"
+        android:layout_row="2"
+        />
+
+    <Button
+        android:text="Save"
+        android:layout_column="5"
+        android:layout_marginTop="20dp"
+        android:onClick="savePrefsOnClick"
+        android:layout_columnSpan="1"
+        />
+  </GridLayout>
 
 </GridLayout>
