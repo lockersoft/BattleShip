@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-    >
+              android:layout_height="match_parent">
 
-  <view
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      class="com.example.battleship.BoardView"
-      android:id="@+id/boardView"
-      android:layout_gravity="center_horizontal"
-      />
-</LinearLayout>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Ship"
+            android:id="@+id/addShip" android:layout_gravity="center_horizontal" android:onClick="onClickAddShip"
+            android:layout_x="179dp" android:layout_y="106dp"
+            android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
+    <view
+            android:layout_width="fill_parent"
+            android:layout_height="569dp"
+            class="com.example.battleship.BoardView"
+            android:id="@+id/boardView"
+            android:layout_alignParentTop="true" android:layout_alignParentStart="true"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner" android:layout_above="@+id/addShip" android:layout_toLeftOf="@+id/addShip"
+            android:entries="@array/rows" android:focusable="false"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner2" android:layout_alignBottom="@+id/spinner" android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/addShip"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner3" android:layout_above="@+id/spinner" android:layout_alignParentStart="true"
+            android:layout_alignEnd="@+id/spinner"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner4" android:layout_alignTop="@+id/spinner3" android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/addShip"/>
+</RelativeLayout>

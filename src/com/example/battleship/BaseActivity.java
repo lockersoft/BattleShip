@@ -22,6 +22,9 @@ public class BaseActivity extends Activity {
 
   public static Gamer currentUser = null;
   public final int gridTop = 50;
+  public static String loginUsername = "";
+  public static String loginPassword = "";
+  public static int gameID = 0;
 
   public enum ServerCommands {
     LOGIN, GET_USERS, GET_AVATAR
@@ -65,6 +68,9 @@ public class BaseActivity extends Activity {
   @Override
   public boolean onCreateOptionsMenu( Menu menu ) {
     getMenuInflater().inflate( R.menu.mastermenu, menu );
+    MenuItem item = menu.findItem(R.id.switchToPreferences);
+    if( currentUser == null )
+      item.setVisible(false);
     return true;
   }
 

@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import org.json.JSONObject;
 
 /**
  * User: lockersoft
@@ -20,13 +23,16 @@ public class Game extends BaseActivity {
   public static GameCell[][] gameGrid = new GameCell[11][11];
   View gameBoard = null;
   Activity customGrid = this;
+  public static boolean gameStarted = false;
+
 
   @Override
   protected void onCreate( Bundle savedInstanceState ) {
     super.onCreate( savedInstanceState );
     initializeApp();
-    setContentView( R.layout.gameboard );
-    gameBoard = findViewById( R.id.boardView );
+    setContentView(R.layout.gameboard);
+    gameBoard = findViewById(R.id.boardView);
+    gameStarted = false;
   }
 
   private void initializeApp() {
@@ -36,14 +42,21 @@ public class Game extends BaseActivity {
         gameGrid[x][y] = new GameCell();
       }
     }
-    gameGrid[1][1].setHas_ship( true );
-    gameGrid[1][2].setHit( true );
+    gameGrid[1][1].setHas_ship(true);   // For debugging
+    gameGrid[1][2].setHit(true);
+    // API Call to create a game.
+//    ChallengeComputer();
+  }
 
+
+  public void onClickAddShip(  View view ){
+
+    gameStarted = true;
+    gameBoard.invalidate();
   }
 
   public static float[] getRelativeCoords(Activity activity,
-                                          MotionEvent e)
-  {
+                                          MotionEvent e) {
     // MapView
     View contentView= activity.getWindow().
         findViewById( Window.ID_ANDROID_CONTENT);

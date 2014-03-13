@@ -59,49 +59,52 @@ public class BoardView extends ImageView {
     paint.setColor( Color.GREEN );
     paint.setStrokeWidth( 2 );
 
-    Game.gameGrid[0][0].setCellHeight( cellHeight );
-    Game.gameGrid[0][0].setCellWidth( cellWidth );
-    Game.gameGrid[0][0].setViewOrigin( origin );
+    if( Game.gameStarted ) {
 
-    for( int y = 0; y < 11; y++ ) {
-      for( int x = 0; x < 11; x++ ) { // TODO:  add the points to the gameGrid
-        Game.gameGrid[x][y].setTopleft( new Point( x * cellWidth + border, y * cellHeight + topBoardY ) );
-        Game.gameGrid[x][y].setBottomright( new Point( ( x + 1 ) * cellWidth + border, ( y + 1 ) * cellHeight + topBoardX ) );
-//        grid[x][y] = new Point(x*cellWidth+border, y*cellHeight+topBoardY);
+      Game.gameGrid[0][0].setCellHeight( cellHeight );
+      Game.gameGrid[0][0].setCellWidth( cellWidth );
+      Game.gameGrid[0][0].setViewOrigin( origin );
+
+      for( int y = 0; y < 11; y++ ) {
+        for( int x = 0; x < 11; x++ ) { // TODO:  add the points to the gameGrid
+          Game.gameGrid[x][y].setTopleft( new Point( x * cellWidth + border, y * cellHeight + topBoardY ) );
+          Game.gameGrid[x][y].setBottomright( new Point( ( x + 1 ) * cellWidth + border, ( y + 1 ) * cellHeight + topBoardX ) );
+        }
       }
-    }
 
-    // Draw the horizontal lines
-    for( int i = 0; i < 11; i++ ) {
-      canvas.drawLine( i * cellWidth + border, topBoardY, i * cellWidth + border, middle - border, paint );    // Vertical Lines
-      canvas.drawLine( border, i * cellHeight + topBoardY, screenWidth - border, i * cellHeight + topBoardY, paint );  // Horizontal Lines
-    }
-    paint.setStrokeWidth( 2 );
-    paint.setColor( Color.WHITE );
-    paint.setStyle( Paint.Style.FILL_AND_STROKE );
-    canvas.drawText( "Attacking Board", 40, 40, paint );
+      // Draw the horizontal lines
+      for( int i = 0; i < 11; i++ ) {
+        canvas.drawLine( i * cellWidth + border, topBoardY, i * cellWidth + border, middle - border, paint );    // Vertical Lines
+        canvas.drawLine( border, i * cellHeight + topBoardY, screenWidth - border, i * cellHeight + topBoardY, paint );  // Horizontal Lines
+      }
+      paint.setStrokeWidth( 2 );
+      paint.setColor( Color.WHITE );
+      paint.setStyle( Paint.Style.FILL_AND_STROKE );
+      canvas.drawText( "Attacking Board", 40, 40, paint );
 
-    float w = paint.measureText( numbers[0], 0, numbers[0].length() );
-    float center = ( cellWidth / 2 ) - ( w / 2 );
-    for( int x = 0; x < 10; x++ ) {
-      canvas.drawText( letters[x], Game.gameGrid[x][0].getTopleft().x + center + cellWidth, Game.gameGrid[x][0].getTopleft().y + fontSize + border, paint );
-    }
-    for( int y = 0; y < 10; y++ ) {
-      canvas.drawText( numbers[y], Game.gameGrid[0][y].getTopleft().x + center, Game.gameGrid[0][y + 1].getTopleft().y + cellHeight - border, paint );
-    }
+      float w = paint.measureText( numbers[0], 0, numbers[0].length() );
+      float center = ( cellWidth / 2 ) - ( w / 2 );
+      for( int x = 0; x < 10; x++ ) {
+        canvas.drawText( letters[x], Game.gameGrid[x][0].getTopleft().x + center + cellWidth, Game.gameGrid[x][0].getTopleft().y + fontSize + border, paint );
+      }
+      for( int y = 0; y < 10; y++ ) {
+        canvas.drawText( numbers[y], Game.gameGrid[0][y].getTopleft().x + center, Game.gameGrid[0][y + 1].getTopleft().y + cellHeight - border, paint );
+      }
 
-    paint.setColor( Color.WHITE );
-    // Draw the contents of the grid
-    for( int y = 0; y < 11; y++ ) {
-      for( int x = 0; x < 11; x++ ) {
-        if( Game.gameGrid[x][y].getHas_ship() )
-          drawCell( "S", x, y, center, canvas );
-        if( Game.gameGrid[x][y].getWaiting() )
-          drawCell( "W", x, y, center, canvas );
-        if( Game.gameGrid[x][y].getMiss() )
-          drawCell( "M", x, y, center, canvas );
-        if( Game.gameGrid[x][y].getHit() )
-          drawCell( "H", x, y, center, canvas );
+      paint.setColor( Color.WHITE );
+      // Draw the contents of the grid
+      for( int y = 0; y < 11; y++ ) {
+        for( int x = 0; x < 11; x++ ) {
+          if( Game.gameGrid[x][y].getHas_ship() )
+            drawCell( "S", x, y, center, canvas );
+          if( Game.gameGrid[x][y].getWaiting() )
+            drawCell( "W", x, y, center, canvas );
+          if( Game.gameGrid[x][y].getMiss() )
+            drawCell( "M", x, y, center, canvas );
+          if( Game.gameGrid[x][y].getHit() )
+            drawCell( "H", x, y, center, canvas );
+        }
+
       }
     }
   }
