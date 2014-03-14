@@ -127,33 +127,8 @@ public class MainActivity extends BaseActivity {
     }
   }
 
-  public void ChallengeComputer() {
-    AsyncHttpClient client = new AsyncHttpClient();
-    client.setBasicAuth( loginUsername, loginPassword );
-    String challengeUrl = "http://battlegameserver.com/api/v1/challenge_computer.json";
-    client.get( challengeUrl, new AsyncHttpResponseHandler() {
-      @Override
-      public void onSuccess( String response ) {
-        // Successfully got a response so parse JSON object
-        try {
-          JSONObject user = new JSONObject( response );
-          gameID = Integer.parseInt( user.getString( "game_id" ) );
-        } catch( Exception e ) {
-          e.printStackTrace();
-          toastIt( e.getLocalizedMessage() );
-        }
-      }
-
-      @Override
-      public void onFailure( int i, Throwable e, String imageData ) {
-        // Response failed :(
-        toastIt( e.getLocalizedMessage() );
-      }
-    } );
-  }
 
   public void getUsersOnClick( View v ) {
-    ChallengeComputer();
     progressBar.setVisibility( View.VISIBLE );
     ServerRequest sr = new ServerRequest( getUsersUrl, ServerCommands.GET_USERS );
     GetJSONAsync task = new GetJSONAsync();
