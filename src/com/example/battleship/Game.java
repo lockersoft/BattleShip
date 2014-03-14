@@ -11,11 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import org.json.JSONArray;
+import org.apache.http.Header;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * User: lockersoft
@@ -56,19 +57,20 @@ public class Game extends BaseActivity {
     gameGrid[1][2].setHit(true);
     // API Call to create a game.
     ChallengeComputer();
-    GetShipsAndDirections();
+    GetShips();
   }
 
-  public void GetShipsAndDirections() {
+  public void GetShips() {
     AsyncHttpClient client = new AsyncHttpClient();
     client.setBasicAuth(loginUsername, loginPassword);
     String challengeUrl = "http://battlegameserver.com/api/v1/available_ships.json";
     client.get(challengeUrl, new AsyncHttpResponseHandler() {
       @Override
-      public void onSuccess(String response) {
+      public void onSuccess(int statusCode, Header[] headers, byte[] response) {
         // Successfully got a response so parse JSON object
         try {
-          JSONObject ships = new JSONObject(response);
+          String decodedResponse = new String(response, "UTF-8");
+          JSONObject ships = new JSONObject(decodedResponse);
           // Fill in the spinner with ship info
           Iterator iter = ships.keys();
           while (iter.hasNext()) {
@@ -92,9 +94,9 @@ public class Game extends BaseActivity {
       }
 
       @Override
-      public void onFailure(int i, Throwable e, String imageData) {
+      public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
         // Response failed :(
-        toastIt(e.getLocalizedMessage());
+        toastIt(error.getLocalizedMessage());
       }
     });
   }
@@ -106,10 +108,11 @@ public class Game extends BaseActivity {
     String challengeUrl = "http://battlegameserver.com/api/v1/challenge_computer.json";
     client.get(challengeUrl, new AsyncHttpResponseHandler() {
       @Override
-      public void onSuccess(String response) {
+      public void onSuccess(int statusCode, Header[] headers, byte[] response) {
         // Successfully got a response so parse JSON object
         try {
-          JSONObject user = new JSONObject(response);
+          String decodedResponse = new String(response, "UTF-8");
+          JSONObject user = new JSONObject(decodedResponse);
           gameID = Integer.parseInt(user.getString("game_id"));
         } catch (Exception e) {
           e.printStackTrace();
@@ -118,9 +121,9 @@ public class Game extends BaseActivity {
       }
 
       @Override
-      public void onFailure(int i, Throwable e, String imageData) {
+      public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
         // Response failed :(
-        toastIt(e.getLocalizedMessage());
+        toastIt(responseBody.toString());
       }
     });
   }

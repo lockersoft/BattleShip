@@ -11,6 +11,7 @@ import android.widget.*;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.BinaryHttpResponseHandler;
+import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -57,7 +58,7 @@ public class MainActivity extends BaseActivity {
 //    task.execute( new ServerRequest[] { sr } );
 
     // Check text of button and login or logout
-    if( loginBtn.getText().toString() == "Logout" ) {
+    if( loginBtn.getText().toString().equals("Logout")) {
       // Hide buttons, etc.
       loginBtn.setText( "Login" );
       showUsersBtn.setEnabled( false );
@@ -79,10 +80,11 @@ public class MainActivity extends BaseActivity {
         }
 
         @Override
-        public void onSuccess( String response ) {
-          Log.i( "LOGIN", response );
+        public void onSuccess( int statusCode, Header[] headers, byte[] response ) {
+          Log.i( "LOGIN", response.toString() );
           try {
-            JSONObject user = new JSONObject( response );
+            String decodedResponse = new String(response, "UTF-8");
+            JSONObject user = new JSONObject( decodedResponse );
             Log.i( "JSON", user.getString( "first_name" ) + " " + user.getString( "last_name" ) + "\n" );
             // Put into a gamer object
             // String _first_name, String _last_name, String _email, Integer _online,
@@ -118,9 +120,9 @@ public class MainActivity extends BaseActivity {
         }
 
         @Override
-        public void onFailure( int i, Throwable e, String errorMsg ) {
+        public void onFailure( int statusCode, Header[] headers, byte[] errorMsg, Throwable error ) {
           // Response failed :(
-          Log.i( "LOGIN", errorMsg + " i:" + i );
+          Log.i( "LOGIN", errorMsg + " i:" + statusCode );
           toastIt( "Connection Error: " + errorMsg );
         }
       } );
@@ -301,7 +303,7 @@ public class MainActivity extends BaseActivity {
       }
 
       @Override
-      public void onFailure( int i, Throwable e, String imageData ) {
+      public void onFailure( int statusCode, Header[] headers, byte[] errorMsg, Throwable error ) {
         // Response failed :(
       }
     } );
