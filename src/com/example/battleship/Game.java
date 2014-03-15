@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -104,33 +105,16 @@ public class Game extends BaseActivity {
     } );
   }
 
+  public static void challengeComputerSuccess( JSONObject game){
+    try {
+      gameID = Integer.parseInt( game.getString( "game_id" ) );
+    } catch( Exception e ) {
+      e.printStackTrace();
+    }
+  }
 
   public void ChallengeComputer() {
-    AsyncHttpClient client = new AsyncHttpClient();
-    client.setBasicAuth( loginUsername, loginPassword );
-    String challengeUrl = "http://battlegameserver.com/api/v1/challenge_computer.json";
-    client.get( challengeUrl, new JsonHttpResponseHandler() {
-      @Override
-      public void onSuccess( JSONObject game ) {
-        // Successfully got a response so parse JSON object
-        try {
-          gameID = Integer.parseInt( game.getString( "game_id" ) );
-        } catch( Exception e ) {
-          e.printStackTrace();
-          toastIt( e.getLocalizedMessage() );
-        }
-      }
-
-      @Override
-      public void onFailure( int statusCode, Header[] headers, byte[] responseBody, Throwable error ) {
-        // Response failed :(String decodedResponse = ;
-        try {
-          toastIt( new String( responseBody, "UTF-8" ) );
-        } catch( Exception e ) {
-          e.printStackTrace();
-        }
-      }
-    } );
+    new BattleShipAPI( loginUsername, loginPassword ).challengeComputer();
   }
 
   public void onClickAddShip( View view ) {
