@@ -48,16 +48,6 @@ public class MainActivity extends BaseActivity {
   }
 
   public void loginToServer( View view ) {
-//    loginUsername = username.getText().toString();
-//    loginPassword = password.getText().toString();
-    //  String credentials = username.getText().toString() + ":" + password.getText().toString();
-//    String credentials = loginUsername + ":" + loginPassword;
-    //  base64EncodedCredentials = Base64.encodeToString( credentials.getBytes(), Base64.NO_WRAP );
-    //request.addHeader("Authorization", "Basic " + base64EncodedCredentials);
-//    ServerRequest sr = new ServerRequest( loginUrl, ServerCommands.LOGIN );
-//    GetJSONAsync task = new GetJSONAsync();
-//    task.execute( new ServerRequest[] { sr } );
-
     // Check text of button and login or logout
     if( loginBtn.getText().toString().equals( "Logout" ) ) {
       // Hide buttons, etc.
@@ -120,13 +110,16 @@ public class MainActivity extends BaseActivity {
         @Override
         public void onFailure( int statusCode, Header[] headers, byte[] errorMsg, Throwable error ) {
           // Response failed :(
-          Log.i( "LOGIN", errorMsg + " i:" + statusCode );
-          toastIt( "Connection Error: " + errorMsg );
+          try {
+            Log.i( "LOGIN", errorMsg + " i:" + statusCode );
+            toastIt( "Connection Error: " + new String( errorMsg, "UTF-8" ) );
+          } catch( Exception e ) {
+            e.printStackTrace();
+          }
         }
       } );
     }
   }
-
 
   public void getUsersOnClick( View v ) {
     progressBar.setVisibility( View.VISIBLE );
@@ -303,6 +296,11 @@ public class MainActivity extends BaseActivity {
       @Override
       public void onFailure( int statusCode, Header[] headers, byte[] errorMsg, Throwable error ) {
         // Response failed :(
+        try {
+          toastIt( new String( errorMsg, "UTF-8" ) );
+        } catch( Exception e ) {
+          e.printStackTrace();
+        }
       }
     } );
 

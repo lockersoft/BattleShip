@@ -95,7 +95,11 @@ public class Game extends BaseActivity {
       @Override
       public void onFailure( int statusCode, Header[] headers, byte[] responseBody, Throwable error ) {
         // Response failed :(
-        toastIt( error.getLocalizedMessage() );
+        try {
+          toastIt( new String( responseBody, "UTF-8" ) );
+        } catch( Exception e ) {
+          e.printStackTrace();
+        }
       }
     } );
   }
@@ -107,10 +111,10 @@ public class Game extends BaseActivity {
     String challengeUrl = "http://battlegameserver.com/api/v1/challenge_computer.json";
     client.get( challengeUrl, new JsonHttpResponseHandler() {
       @Override
-      public void onSuccess( JSONObject user ) {
+      public void onSuccess( JSONObject game ) {
         // Successfully got a response so parse JSON object
         try {
-          gameID = Integer.parseInt( user.getString( "game_id" ) );
+          gameID = Integer.parseInt( game.getString( "game_id" ) );
         } catch( Exception e ) {
           e.printStackTrace();
           toastIt( e.getLocalizedMessage() );
@@ -119,8 +123,12 @@ public class Game extends BaseActivity {
 
       @Override
       public void onFailure( int statusCode, Header[] headers, byte[] responseBody, Throwable error ) {
-        // Response failed :(
-        toastIt( responseBody.toString() );
+        // Response failed :(String decodedResponse = ;
+        try {
+          toastIt( new String( responseBody, "UTF-8" ) );
+        } catch( Exception e ) {
+          e.printStackTrace();
+        }
       }
     } );
   }
