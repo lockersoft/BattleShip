@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import org.apache.http.Header;
