@@ -24,5 +24,7 @@
     </activity>
     <activity android:name=".Game">
     </activity>
+    <activity android:name=".TouchActivity">
+    </activity>
   </application>
 </manifest>

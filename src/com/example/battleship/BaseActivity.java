@@ -84,6 +84,9 @@ public class BaseActivity extends Activity {
       case R.id.switchToGame:
         startActivity( new Intent( this, Game.class ) );
         break;
+      case R.id.switchToTouch:
+        startActivity( new Intent( this, TouchActivity.class ) );
+        break;
       default:
         return super.onOptionsItemSelected( item );
     }

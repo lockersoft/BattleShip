@@ -13,5 +13,10 @@
       android:showAsAction="always"
       android:icon="@drawable/battleship"
       android:title="Game"/>
-
+  <item
+      android:id="@+id/switchToTouch"
+      android:orderInCategory="300"
+      android:showAsAction="always"
+      android:icon="@drawable/battleship"
+      android:title="Touch"/>
 </menu>
