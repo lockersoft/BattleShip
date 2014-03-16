@@ -1,9 +1,8 @@
 package com.example.battleship;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import org.apache.http.Header;
-import org.json.JSONObject;
+import com.loopj.android.http.*;
+import org.apache.http.*;
+import org.json.*;
 
 /**
  * Created by dljones on 3/14/14.
@@ -12,12 +11,19 @@ public class BattleShipAPI extends BaseActivity {
   final String loginUrl = "http://battlegameserver.com/api/v1/login.json";
   String userName, userPassword;
 
-  BattleShipAPI(String _userName, String _password){
+  /**
+   * @param _userName
+   * @param _password
+   */
+  BattleShipAPI( String _userName, String _password ) {
     userName = _userName;
     userPassword = _password;
   }
 
-  public void  challengeComputer(){
+  /**
+   *
+   */
+  public void challengeComputer() {
     AsyncHttpClient client = new AsyncHttpClient();
     client.setBasicAuth( loginUsername, loginPassword );
     String challengeUrl = "http://battlegameserver.com/api/v1/challenge_computer.json";
@@ -30,7 +36,7 @@ public class BattleShipAPI extends BaseActivity {
 
       @Override
       public void onFailure( int statusCode, Header[] headers, byte[] responseBody, Throwable error ) {
-        apiFailure( statusCode,headers,responseBody,error );
+        apiFailure( statusCode, headers, responseBody, error );
       }
     } );
   }
@@ -59,7 +65,13 @@ public class BattleShipAPI extends BaseActivity {
 //
 //  }
 
-  public void apiFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error){
+  /**
+   * @param statusCode
+   * @param headers
+   * @param responseBody
+   * @param error
+   */
+  public void apiFailure( int statusCode, Header[] headers, byte[] responseBody, Throwable error ) {
     // Response failed :(String decodedResponse = ;
     try {
       toastIt( new String( responseBody, "UTF-8" ) );

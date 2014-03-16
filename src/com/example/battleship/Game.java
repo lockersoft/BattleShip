@@ -1,22 +1,16 @@
 package com.example.battleship;
 
-import android.app.Activity;
-import android.graphics.Point;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import org.apache.http.Header;
-import org.json.JSONObject;
+import android.app.*;
+import android.graphics.*;
+import android.os.*;
+import android.util.*;
+import android.view.*;
+import android.widget.*;
+import com.loopj.android.http.*;
+import org.apache.http.*;
+import org.json.*;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * User: lockersoft
@@ -24,6 +18,8 @@ import java.util.Map;
  * Time: 3:31 PM
  * <p/>
  * Class: Game
+ * @author lockersoft
+ * @see com.example.battleship.BaseActivity
  */
 public class Game extends BaseActivity {
 
@@ -103,7 +99,10 @@ public class Game extends BaseActivity {
     } );
   }
 
-  public static void challengeComputerSuccess( JSONObject game){
+  /**
+   * @param game
+   */
+  public static void challengeComputerSuccess( JSONObject game ) {
     try {
       gameID = Integer.parseInt( game.getString( "game_id" ) );
     } catch( Exception e ) {
@@ -111,10 +110,16 @@ public class Game extends BaseActivity {
     }
   }
 
+  /**
+   *
+   */
   public void ChallengeComputer() {
     new BattleShipAPI( loginUsername, loginPassword ).challengeComputer();
   }
 
+  /**
+   * @param view
+   */
   public void onClickAddShip( View view ) {
     // Get the ship information,
     // call the server,
@@ -150,6 +155,11 @@ public class Game extends BaseActivity {
         e.getRawY() - contentView.getTop() };
   }
 
+  /**
+   * @param event
+   *
+   * @return TRUE to consume the event
+   */
   @Override
   public boolean onTouchEvent( MotionEvent event ) {
     int eventAction = event.getAction();

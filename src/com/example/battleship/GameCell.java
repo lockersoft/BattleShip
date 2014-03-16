@@ -1,6 +1,6 @@
 package com.example.battleship;
 
-import android.graphics.Point;
+import android.graphics.*;
 
 /**
  * User: lockersoft
@@ -19,6 +19,9 @@ public class GameCell {
   private Point viewOrigin;
   private int cellHeight, cellWidth;
 
+  /**
+   *
+   */
   public GameCell() {
     has_ship = false;
     miss = false;
@@ -31,6 +34,15 @@ public class GameCell {
   }
 
   // GameCell Constructor
+
+  /**
+   * @param _has_ship
+   * @param _miss
+   * @param _hit
+   * @param _waiting
+   * @param _topLeft
+   * @param _bottomRight
+   */
   public GameCell( Boolean _has_ship, Boolean _miss, Boolean _hit, Boolean _waiting, Point _topLeft, Point _bottomRight ) {
     has_ship = _has_ship;
     miss = _miss;
@@ -40,86 +52,133 @@ public class GameCell {
     bottomRight = _bottomRight;
   }
 
+  /**
+   * @param _origin
+   */
   public void setViewOrigin( Point _origin ) {
     viewOrigin = _origin;
   }
 
+  /**
+   * @return viewOrigin
+   */
   public Point getViewOrigin() {
     return viewOrigin;
   }
 
+  /**
+   * @param _cellHeight
+   */
   public void setCellHeight( int _cellHeight ) {
     cellHeight = _cellHeight;
   }
 
+  /**
+   * @return cellHeight
+   */
   public int getCellHeight() {
     return cellHeight;
   }
 
+  /**
+   * @param _cellWidth
+   */
   public void setCellWidth( int _cellWidth ) {
     cellWidth = _cellWidth;
   }
 
+  /**
+   * @return cellWidth
+   */
   public int getCellWidth() {
     return cellWidth;
   }
 
-  // has_ship Getter
+
+  /**
+   * has_ship Getter
+   *
+   * @return has_ship
+   */
   public Boolean getHas_ship() {
     return has_ship;
   }
 
-  // has_ship Setter
+  /**
+   * Getter
+   *
+   * @param _has_ship
+   */
   public void setHas_ship( Boolean _has_ship ) {
     has_ship = _has_ship;
   }
 
-  // miss Getter
+  /**
+   * @return miss
+   */
   public Boolean getMiss() {
     return miss;
   }
 
-  // miss Setter
+  /**
+   * @param _miss
+   */
   public void setMiss( Boolean _miss ) {
     miss = _miss;
   }
 
-  // hit Getter
+  /**
+   * @return hit
+   */
   public Boolean getHit() {
     return hit;
   }
 
-  // hit Setter
+  /**
+   * @param _hit
+   */
   public void setHit( Boolean _hit ) {
     hit = _hit;
   }
 
-  // waiting Getter
+  /**
+   * @return waiting
+   */
   public Boolean getWaiting() {
     return waiting;
   }
 
-  // waiting Setter
+  /**
+   * @param _waiting
+   */
   public void setWaiting( Boolean _waiting ) {
     waiting = _waiting;
   }
 
-  // topLeft Getter
+  /**
+   * @return topLeft
+   */
   public Point getTopleft() {
     return topLeft;
   }
 
-  // topLeft Setter
+  /**
+   * @param _topLeft
+   */
   public void setTopleft( Point _topLeft ) {
     topLeft = _topLeft;
   }
 
-  // bottomRight Getter
+  /**
+   * @return bottomRight
+   */
   public Point getBottomright() {
     return bottomRight;
   }
 
-  // bottomRight Setter
+  /**
+   * @param _bottomRight
+   */
   public void setBottomright( Point _bottomRight ) {
     bottomRight = _bottomRight;
   }
